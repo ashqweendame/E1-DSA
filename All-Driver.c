@@ -1,10 +1,10 @@
 // #include "stackArray.h"
 // #include "stackLinked.h"
-#include "queueArray.h"
+// #include "queueArray.h"
 //#include "queueLinked.h"
 // #include "listArray.h"
 // #include "listLinked.h"
-//#include "cursor.h"
+#include "cursor.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -41,9 +41,9 @@ int main(){
     initList(&L);
 
     for(int i = 0; i < len; i++){
-        // insertLast(&L, studrec[i]); //use for list
+        insertLast(&L, studrec[i]); //use for list
         // push(&L, studrec[i]); //use for stack
-        Enqueue(&L, studrec[i]); //use for queue
+        // Enqueue(&L, studrec[i]); //use for queue
     }
     displayList(L);
 

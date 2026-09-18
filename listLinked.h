@@ -25,11 +25,9 @@ void initList(List* A){
 
 void displayList(List A){
     displayHeader();
-    if(A != NULL){
-        for(;A!=NULL; A=A->link){
-            displayStudent(A->stud);
-        }
-    }else printf("\nList is empty! Nothing to show.\n");
+    for(;A!=NULL; A=A->link){
+        displayStudent(A->stud);
+    }
     printf("----------------------------------------------------------------------\n");
 }
 
@@ -37,9 +35,11 @@ void insertLast(List* A, Student s){
     List* ptr;
     for(ptr = A; *ptr!= NULL; ptr = &(*ptr)->link){}
     List temp = (List)malloc(sizeof(struct node));
-    temp->stud = s;
-    temp->link = *ptr;
-    *ptr = temp;
+    if(temp != NULL){
+        temp->stud = s;
+        temp->link = *ptr;
+        *ptr = temp;
+    }
 }
 
 void deleteLast(List* A){
@@ -47,8 +47,9 @@ void deleteLast(List* A){
     if(*A != NULL){
         for(ptr = A; *ptr!=NULL; ptr = &(*ptr)->link){}
         List temp = *ptr;
-        *ptr = temp->link;
+        *ptr = NULL;
         free(temp);
+
         printf("\nSuccessfully deleted the last Student!\n");
     }else printf("\nThe List is empty! There is nothing to delete!\n");
 }
@@ -61,8 +62,8 @@ void deleteElem(List* A, int givenID){
         *ptr = temp->link;
         free(temp);
 
-        printf("\nID number \"%d\" was Successfully Deleted!\n");
-    }else printf("\nID number \"%d\" was not found!\n");
+        printf("\nID number \"%d\" was Successfully Deleted!\n", givenID);
+    }else printf("\nID number \"%d\" was not found!\n", givenID);
 }
 
 void deleteAll(List* A, char course[]){
