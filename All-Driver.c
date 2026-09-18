@@ -41,18 +41,16 @@ int main(){
     initList(&L);
 
     for(int i = 0; i < len; i++){
-        // insertLast(&L, studrec[i]);
-        Enqueue(&L, studrec[i]);
+        // insertLast(&L, studrec[i]); //use for list
+        // push(&L, studrec[i]); //use for stack
+        Enqueue(&L, studrec[i]); //use for queue
     }
-    // displayList(L);
     displayList(L);
 
     deleteAll(&L, "BSIT");
-    // displayList(L);
     displayList(L);
 
     deleteElem(&L, 5102);
-    // displayList(L); 
     displayList(L);
     return 0;
 }
